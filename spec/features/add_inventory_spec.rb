@@ -7,6 +7,7 @@ RSpec.describe 'The wearer adds shoes to their wardrobe', feature: true do
 
     within('form') do
       fill_in 'item', with: 'shoes'
+      # select('Option', from: 'tags')
     end
 
     click_button 'Create Item'
