@@ -15,6 +15,17 @@
     <%= f.text_field :name, placeholder: 'item' %>
   </div>
 
+  <div class="field">
+    <% Tag.all.each do |t| %>
+    
+    <label>
+      <%= check_box_tag('item[tag_ids][]', t.id, item.tags.include?(t)) %>
+      <%= t.name %>  
+    </label>
+
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
