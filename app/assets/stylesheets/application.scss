@@ -25,3 +25,13 @@ table {
   text-align: right;
   text-decoration: underline;
 }
+
+#items-title {
+  display: -webkit-inline-box;
+  margin: 0px;
+}
+
+.item-search-form {
+  display: -webkit-inline-box;
+  float: right;
+}
