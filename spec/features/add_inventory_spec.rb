@@ -10,6 +10,8 @@ RSpec.describe 'The wearer adds shoes to their wardrobe', feature: true do
     within('form') do
       fill_in 'item', with: 'shoes'
       check('sunny')
+      # add image
+      attach_file('item[image]', File.join(Rails.root, 'spec/fixtures/test.png'))
     end
 
     click_button 'Create Item'
@@ -18,5 +20,7 @@ RSpec.describe 'The wearer adds shoes to their wardrobe', feature: true do
 
     expect(page.body).to have_content('shoes')
     expect(page.body).to have_content('sunny')
+    expect(page.find(:css, 'img')[:alt]).to eq 'Test'
+    expect(page.find(:css, 'img')[:src]).to eq '/item/image/1/test.png'
   end
 end

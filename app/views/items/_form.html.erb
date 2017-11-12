@@ -26,6 +26,12 @@
     <% end %>
   </div>
 
+  <div class="field">
+    <label>
+      <%= f.file_field :image, alt: item.image_identifier %>
+    </label>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

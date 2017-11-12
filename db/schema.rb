@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20171111230909) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,4 +32,5 @@ ActiveRecord::Schema.define(version: 20171111230909) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end
