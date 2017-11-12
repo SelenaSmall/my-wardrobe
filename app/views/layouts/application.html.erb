@@ -8,7 +8,23 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-brand">
+        <%= link_to 'Home', root_path, class: "btn btn-default" %>
+        Inventory  
+      </div>
+      
+      <ul class="nav navbar-nav navbar-right">  
+        <li><%= link_to 'Tags', tags_path, class: "btn btn-default" %></li>
+        <li><%= link_to 'Items', items_path, class: "btn btn-default" %></li>
+      </ul>
+    </div>
+  </nav>
+
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

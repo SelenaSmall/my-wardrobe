@@ -10,7 +10,6 @@ RSpec.describe 'The wearer adds shoes to their wardrobe', feature: true do
     within('form') do
       fill_in 'item', with: 'shoes'
       check('sunny')
-      # add image
       attach_file('item[image]', File.join(Rails.root, 'spec/fixtures/test.png'))
     end
 
