@@ -29,4 +29,8 @@ add react using react_on_rails generate install
 
 ## Start with Webpack
 
+<<<<<<< HEAD
 ```foreman start -f Procfile.dev```
+=======
+```foreman start -f Procfile.dev -e .env,.env.local```
+>>>>>>> 79f26244c8e999fa54851eddce5dc7a6a6931845
