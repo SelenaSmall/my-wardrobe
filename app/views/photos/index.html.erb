@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-xs-8">
+    <h3 id="photos-title">Photos</h3>
+  </div>
+
+  <div class="col-xs-4 new-link">
+    <%= link_to 'New Photo', new_photo_path %>
+  </div>
+</div>
+
+<br>
+
+<table>
+  <thead>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @photos.each do |photo| %>
+    <tr>
+      <td><%= image_tag(photo.image) %></td>
+      <td><%= photo.name %></td>
+      <td>
+        <%= link_to 'Edit', edit_photo_path(photo) %> |
+        <%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
