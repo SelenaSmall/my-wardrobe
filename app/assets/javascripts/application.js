@@ -14,4 +14,5 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require webcam
 //= require_tree .

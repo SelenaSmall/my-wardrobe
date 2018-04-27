@@ -11,6 +11,7 @@ end
 gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
+gem 'jquery-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -22,6 +23,8 @@ gem 'bootstrap-sass'
 
 # Image upload
 gem 'carrierwave'
+gem 'carrierwave-base64'
+gem 'rmagick' # have any error? see this link: http://stackoverflow.com/a/5207041
 
 # react
 #   following https://learnetto.com/blog/3-ways-to-use-react-with-ruby-on-rails-5
