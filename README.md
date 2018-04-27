@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+add react using react_on_rails generate install
+
+
+## Start with Webpack
+
+```foreman start -f Procfile.dev -e .env,.env.local```
