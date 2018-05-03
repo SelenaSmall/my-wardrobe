@@ -1,11 +1,13 @@
 <%= form_for(@photo) do |f| %>
+  <div class="field">
+    <%= f.text_field :name, placeholder: 'photo name' %>
+  </div>
   <div id="my_camera" style="width:320px; height:240px;"></div>
 
-  <!--this needs to be a form field-->
   <input type=button value="Take Snapshot" onClick="take_snapshot()">
 
   <div class="field">
-    <%= f.hidden_field :image, type: 'text', alt: photo.image_identifier %>
+    <%= f.file_field :image, type: 'text', alt: photo.image_identifier, id: 'image_field' %>
 
     <%= f.label :image %>: <br />
     <div id="my_result">Your captured image will appear here...</div>
@@ -15,8 +17,6 @@
     <%= f.submit %>
   </div>
 <% end %>
-
-<!--<script src="webcam.js"></script>-->
 
 <script language="JavaScript">
     Webcam.set({
@@ -36,11 +36,7 @@
     function take_snapshot() {
       Webcam.snap( function(data_uri) {
           document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+          document.getElementById('image_field').value = data_uri;
       } );
     }
 </script>
-
-#1 take snapshot
-#2 parse base64 url as param to image field
-#2 save base64 decode to file name --> screenshot_2018-04-04-03-23-39.909.png
-#3 on create save image to uploads

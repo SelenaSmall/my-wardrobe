@@ -1,3 +1,5 @@
+require "base64"
+
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
@@ -17,8 +19,6 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-    puts photo_params
-    puts @photo.image_identifier
 
     respond_to do |format|
       if @photo.save
