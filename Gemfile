@@ -19,7 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 # bootstrap for styles
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '3.2.0.2'
 
 # Image upload
 gem 'carrierwave'
