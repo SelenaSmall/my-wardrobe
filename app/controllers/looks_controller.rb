@@ -2,7 +2,16 @@ class LooksController < ApplicationController
   before_action :set_look, only: [:show, :edit, :update, :destroy]
 
   def index
-    @looks = Look.all
+    @looks = Look.all.includes(:items, :tags).map { |look|
+      {
+          id: look.id,
+          name: look.name,
+          items: look.items.map(&:image),
+          tags: look.tags.map(&:name),
+          editPath: edit_look_url(look),
+          deletePath: look_url(look)
+      }
+    }
   end
 
   def show
@@ -43,10 +52,7 @@ class LooksController < ApplicationController
 
   def destroy
     @look.destroy
-    respond_to do |format|
-      format.html { redirect_to looks_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private
