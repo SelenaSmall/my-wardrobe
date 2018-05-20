@@ -7,7 +7,6 @@
   <tr>
     <th></th>
     <th>Name</th>
-    <th>Category</th>
     <th>Tags</th>
     <th>Actions</th>
   </tr>
@@ -18,7 +17,6 @@
     <tr>
       <td><%= image_tag(item.image) %></td>
       <td><%= item.name %></td>
-      <td><%= item.category && item.category.name %></td>
       <td><%= item.tags.index.map {|t| t.name } %></td>
       <td>
         <%= link_to 'Edit', edit_category_item_path(@category, item) %> |
