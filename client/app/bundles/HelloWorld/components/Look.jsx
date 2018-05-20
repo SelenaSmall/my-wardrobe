@@ -27,7 +27,14 @@ export default class Look extends React.Component {
             .catch((error) => {
                 console.log(error)
             })
-    }
+    };
+
+    renderItems = (look) => (
+         look.items.map((image) => (
+             <img src={image}/>
+             )
+         )
+    );
 
 
     updateName = (name) => {
@@ -35,15 +42,18 @@ export default class Look extends React.Component {
     };
 
     render() {
+
         return (
             <div>
             {this.state.looks.map((look, index) => (
             <div key={index} className="col-md-4" style={{border: "1px solid #000", borderRadius: "5px", padding: "20px", textAlign: "center"}}>
                 {look.name}
                 {look.id}
+
+                {this.renderItems(look)}
+
+
                 <a href={look.editPath} className="btn btn-default"><i className="glyphicon glyphicon-pencil"></i></a>
-
-
                 <a className="btn btn-default" rel="nofollow" onClick={(event) => this.handleDelete(event, look.deletePath, look.id)}>
                     <i className="glyphicon glyphicon-trash"></i>
                 </a>

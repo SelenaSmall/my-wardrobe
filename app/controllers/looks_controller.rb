@@ -6,7 +6,7 @@ class LooksController < ApplicationController
       {
           id: look.id,
           name: look.name,
-          items: look.items.map(&:image),
+          items: look.items.map {|item| view_context.image_url(item.image)},
           tags: look.tags.map(&:name),
           editPath: edit_look_url(look),
           deletePath: look_url(look)
