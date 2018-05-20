@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180520031052) do
+ActiveRecord::Schema.define(version: 20180520052312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,24 @@ ActiveRecord::Schema.define(version: 20180520031052) do
 
   create_table "items_tags", id: false, force: :cascade do |t|
     t.integer "item_id"
+    t.integer "tag_id"
+  end
+
+  create_table "looks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "looks_items", id: false, force: :cascade do |t|
+    t.bigint "look_id"
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_looks_items_on_item_id"
+    t.index ["look_id"], name: "index_looks_items_on_look_id"
+  end
+
+  create_table "looks_tags", id: false, force: :cascade do |t|
+    t.integer "look_id"
     t.integer "tag_id"
   end
 

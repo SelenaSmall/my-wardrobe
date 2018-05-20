@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :tags
   resources :photos
+  resources :looks
   resources :categories do
     resources :items
   end

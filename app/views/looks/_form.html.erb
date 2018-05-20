@@ -1,0 +1,29 @@
+<%= form_with(model: look, local: true) do |f| %>
+  <% if look.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(look.errors.count, "error") %> prohibited this look from being saved:</h2>
+
+      <ul>
+        <% look.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% Tag.all.each do |t| %>
+
+      <label>
+        <%= check_box_tag('look[tag_ids][]', t.id, look.tags.include?(t)) %>
+        <%= t.name %>
+      </label>
+
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
