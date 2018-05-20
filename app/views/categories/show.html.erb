@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @category.name.capitalize %></h2>
+
+<table>
+  <thead>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Tags</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @category.items.each do |item| %>
+    <tr>
+      <td><%= image_tag(item.image) %></td>
+      <td><%= item.name %></td>
+      <td><%= item.category && item.category.name %></td>
+      <td><%= item.tags.index.map {|t| t.name } %></td>
+      <td>
+        <%= link_to 'Edit', edit_category_item_path(@category, item) %> |
+        <%= link_to 'Delete', [@category, item], method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<div class="col-xs-4 new-link">
+  <%= link_to 'New Item', new_category_item_path(@category) %>
+</div>
+
