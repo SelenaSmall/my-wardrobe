@@ -57,6 +57,7 @@ class ItemsController < ApplicationController
   end
 
   def set_category
+    return unless params.permit(:category_id)[:category_id]
     @category = Category.find(params.permit(:category_id)[:category_id])
   end
 

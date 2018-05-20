@@ -56,6 +56,6 @@ class LooksController < ApplicationController
   end
 
   def look_params
-    params.require(:look).permit(tag_ids: [])
+    params.require(:look).permit(:name, tag_ids: [], item_ids: [])
   end
 end

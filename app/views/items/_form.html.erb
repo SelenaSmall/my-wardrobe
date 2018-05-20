@@ -28,7 +28,13 @@
 
   <div class="field">
     <label>Category</label>
-    <%= f.collection_select :category_id, Category.order(:name), :id, :name, { include_blank: true, selected: @category.id } %>
+    <% if @category %>
+      <% selected = @category.id %>
+      <% else %>
+      <% selected = nil %>
+    <% end %>
+
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, { include_blank: true, selected: selected } %>
   </div>
 
   <div class="field">

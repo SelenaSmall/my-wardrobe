@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20180520052312) do
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  create_table "items_looks", id: false, force: :cascade do |t|
+    t.bigint "look_id"
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_items_looks_on_item_id"
+    t.index ["look_id"], name: "index_items_looks_on_look_id"
+  end
+
   create_table "items_tags", id: false, force: :cascade do |t|
     t.integer "item_id"
     t.integer "tag_id"
@@ -39,13 +46,6 @@ ActiveRecord::Schema.define(version: 20180520052312) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "looks_items", id: false, force: :cascade do |t|
-    t.bigint "look_id"
-    t.bigint "item_id"
-    t.index ["item_id"], name: "index_looks_items_on_item_id"
-    t.index ["look_id"], name: "index_looks_items_on_look_id"
   end
 
   create_table "looks_tags", id: false, force: :cascade do |t|

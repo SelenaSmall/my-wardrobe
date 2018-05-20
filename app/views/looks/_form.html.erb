@@ -12,18 +12,43 @@
   <% end %>
 
   <div class="field">
-    <% Tag.all.each do |t| %>
+    <%= f.text_field :name, placeholder: 'look' %>
+  </div>
 
+  <div class="field">
+    <% Tag.all.each do |t| %>
       <label>
         <%= check_box_tag('look[tag_ids][]', t.id, look.tags.include?(t)) %>
         <%= t.name %>
       </label>
-
     <% end %>
+  </div>
+
+  <div class="field">
+    <table>
+      <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Category</th>
+        <th><label>Add Item</label></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% Item.all.each do |item| %>
+          <tr>
+          <td><%= image_tag(item.image) %></td>
+          <td><%= item.name %></td>
+          <td><%= item.category && item.category.name %></td>
+          <td><%= check_box_tag('look[item_ids][]', item.id, look.items.include?(item)) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
-
