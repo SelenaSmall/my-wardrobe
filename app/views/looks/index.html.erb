@@ -15,7 +15,6 @@
 <table>
   <thead>
     <tr>
-      <th></th>
       <th>Name</th>
       <th>Items</th>
       <th>Tags</th>
@@ -24,9 +23,15 @@
   <tbody>
   <% @looks.each do |look| %>
     <tr>
-      <td><%= look.id %></td>
       <td><%= look.name %></td>
-      <td><%= look.items.index.map {|t| t.name } %></td>
+      <td>
+        <% look.items.index.map do |item| %>
+          <br>
+          <%= image_tag(item.image) %>
+          <%= item.name %>
+          <%= item.category && item.category.name %>
+        <% end %>
+      </td>
       <td><%= look.tags.index.map {|t| t.name } %></td>
       <td>
         <%= link_to 'Edit', edit_look_path(look) %> |
