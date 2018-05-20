@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-xs-8">
+    <h3 id="categories-title">Categories</h3>
+  </div>
+
+  <div class="col-xs-4 new-link">
+    <%= link_to 'New Category', new_category_path %>
+  </div>
+</div>
+
+<br>
+
+<table>
+  <thead>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.name %></td>
+      <td>
+        <%= link_to 'Edit', edit_category_path(category) %> |
+        <%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

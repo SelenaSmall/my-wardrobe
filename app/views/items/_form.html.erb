@@ -27,6 +27,11 @@
   </div>
 
   <div class="field">
+    <label>Category</label>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %>
+  </div>
+
+  <div class="field">
     <label>
       <%= f.file_field :image, alt: item.image_identifier %>
     </label>
