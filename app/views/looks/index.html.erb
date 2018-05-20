@@ -12,32 +12,28 @@
 
 <br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Items</th>
-      <th>Tags</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @looks.each do |look| %>
-    <tr>
-      <td><%= look.name %></td>
-      <td>
-        <% look.items.index.map do |item| %>
-          <br>
-          <%= image_tag(item.image) %>
-          <%= item.name %>
-          <%= item.category && item.category.name %>
-        <% end %>
-      </td>
-      <td><%= look.tags.index.map {|t| t.name } %></td>
-      <td>
-        <%= link_to 'Edit', edit_look_path(look) %> |
-        <%= link_to 'Delete', look, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<% @looks.each do |look| %>
+  <div class="col-md-4" style="border: 1px solid #000; border-radius: 5px; padding: 20px; text-align: center">
+    <% look.items.index.map do |item| %>
+      <br>
+      <%= image_tag(item.image) %>
+    <% end %>
+
+    <h3>
+      <%= look.name %><%= link_to edit_look_path(look), class: "btn btn-default" do %>
+        <i class="glyphicon glyphicon-pencil"></i>
+      <% end %>
+      <%= link_to look, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" do %>
+        <i class="glyphicon glyphicon-trash"></i>
+      <% end %>
+    </h3>
+    Tags: <%= look.tags.index.map {|t| t.name } %>
+  </div>
+<% end %>
+
+<style>
+  img {
+    height: 180px !important;
+    width: 180px !important;
+  }
+</style>
