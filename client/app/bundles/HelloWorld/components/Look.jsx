@@ -3,10 +3,6 @@ import React from 'react';
 import axios from 'axios';
 
 export default class Look extends React.Component {
-    static propTypes = {
-        // name: PropTypes.string.isRequired, // this is passed from the Rails view
-    };
-
     /**
      * @param props - Comes from your rails view.
      * @param _railsContext - Comes from React on Rails
@@ -30,28 +26,32 @@ export default class Look extends React.Component {
     };
 
     renderItems = (look) => (
-         look.items.map((image) => (
-             <img src={image}/>
+         look.items.map((image, index) => (
+             <img key={index} src={image}/>
              )
          )
     );
 
+    renderTags = (look) => (
+        look.tags.map((name, index) => (
+            <p key={index}>{name}</p>
+        ))
+    )
 
     updateName = (name) => {
         this.setState({ name });
     };
 
     render() {
-
         return (
             <div>
             {this.state.looks.map((look, index) => (
             <div key={index} className="col-md-4" style={{border: "1px solid #000", borderRadius: "5px", padding: "20px", textAlign: "center"}}>
                 {look.name}
-                {look.id}
 
                 {this.renderItems(look)}
 
+                {this.renderTags(look)}
 
                 <a href={look.editPath} className="btn btn-default"><i className="glyphicon glyphicon-pencil"></i></a>
                 <a className="btn btn-default" rel="nofollow" onClick={(event) => this.handleDelete(event, look.deletePath, look.id)}>
